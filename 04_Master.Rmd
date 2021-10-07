@@ -29,8 +29,9 @@ plot.NDVI(dat)
 
 Q1: This plot suggests that Fynbos greenness (NDVI) as observed from satellite saturates with time since fire. Why do you think it saturates rather than increasing linearly with time?
 
->*Answer 1:*
+>*Answer 1: There is a finite amount of ground cover that fynbos can occupy, meaning it can support a finite number of plants with its limited resources. After a certain point, there is no space for new plants, as they would be quickly out-competed by already-established plants,  which is why the the plot saturates.* 
 <br>
+
 
 ### 2. Fit models using Non-linear Least Squares (NLS)
 
@@ -89,6 +90,7 @@ Lots more parameters...
 Q2: How do the estimates for the common parameters compare?
 
 >*Answer 2:*
+From the simple to the full model, alpha and lambda decrease, while gamma increases. It is worth noting that lambda undergoes a greater change than the other 2 parameters.  
 <br>
 
 ### 3. Compare NLS models using ANOVA
@@ -106,9 +108,19 @@ anova(fit_negexp, fit_negexpS)
 Q3: Which model is better?
 
 >*Answer 3:*
+Model 2 is better as it has a lower residual sum of squares, showing that it captures data better.
+<br>
+
 Q4: How many degrees of freedom are there in this ANOVA and why (i.e. what are they)?
 
 >*Answer 4:*
+In an anova model there are many degrees of freedom. In this case, there are 3 types:
+1. For the simple model: There are 3 parameters (lambda, alpha and gamma). Therefore 135 (Residual dfs) + 3  parameters = 138 degrees of freedom. 
+2. For the full model: There are 5 parameters (lambda, alpha, gamma, A and phi). Therefore 133 (Residual dfs) + 5  parameters = 138 degrees of freedom. 
+Thus there are a total 138 degrees of freedom for both.
+3. The degrees of freedom are the difference in the number of parameters between the models: In this case it is 5 - 3 = 2
+
+The degrees of freedom are the number of observations - 1. They can be thought of as the number of independent deviations around a mean.
 <br>
 
 ### 4. Fit models using Maximum Likelihood Estimation (MLE)
@@ -191,6 +203,7 @@ AIC_simple - AIC_full
 Q5: Is there a preferred model and if so, which one?
 
 >*Answer 5:*
+Yes, it is the full model, because it has a drastically lower AIC value. The difference between them in AIC value is much greater than 3, showing that they are extremely different and the full model is much better.
 <br>
 
 The nice thing about AIC is that the models you compare do not have to be nested like they do for ANOVA, as long as the data are the same. There are a few other constraints however... 
@@ -208,4 +221,5 @@ You'll notice that these are completely different to the AICs for the MLE models
 Q6: Why is it not okay to compare the AIC of these NLS models with the AIC of the MLE models? Hint: type `?AIC` into the R console and do some reading.
 
 >*Answer 6:*
+We cannot because the MLE is done using log likelihood while the NLS is done using least squares. Any model not fitted by maximum likelihood cannot have its AIC values compared to one done with it. 
 <br>
