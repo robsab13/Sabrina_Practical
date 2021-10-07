@@ -108,7 +108,7 @@ anova(fit_negexp, fit_negexpS)
 Q3: Which model is better?
 
 >*Answer 3:*
-Model 2 is better as it has a lower residual sum of squares, showing that it captures data better.
+Model 2 is better as it has a lower residual sum of squares, showing that it captures the data better.
 <br>
 
 Q4: How many degrees of freedom are there in this ANOVA and why (i.e. what are they)?
