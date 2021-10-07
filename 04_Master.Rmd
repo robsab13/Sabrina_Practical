@@ -90,7 +90,7 @@ Lots more parameters...
 Q2: How do the estimates for the common parameters compare?
 
 >*Answer 2:*
-From the simple to the full model, alpha and lambda decrease, while gamma increases. It is worth noting that lambda undergoes a greater change than the other 2 parameters.  
+From the simple to the full model, alpha and lambda decrease, while gamma increases. It is worth noting that lambda undergoes a greater change than the other parameters.  
 <br>
 
 ### 3. Compare NLS models using ANOVA
